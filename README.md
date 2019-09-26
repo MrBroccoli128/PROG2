@@ -1,4 +1,4 @@
-#Ausgangslage
+# Ausgangslage
 
 ## Funktion/Projektidee
 Eine einfache Buchhaltung. 
