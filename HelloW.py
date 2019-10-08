@@ -1,21 +1,20 @@
-from flask import Flask
-from flask import render_template
-from flask import request
+from flask import Flask, render_template, request
+from flask_bootstrap import Bootstrap
 
-
-app = Flask("Hello World")
-
+app = Flask("__main__")
+Bootstrap(app)
 @app.route('/hello')
 def hello_world():
     name = "Jonathan2"
     return render_template('index.html', name=name, ha="Vogel")
+
 
 @app.route("/test")
 def test():
     return "success"
 
 
-@app.route("/tr/", methods=['GET', 'POST'])
+@app.route("/", methods=['GET', 'POST'])
 def tr():
     if request.method == 'POST':
         z1 = int(request.form['zahl1'])

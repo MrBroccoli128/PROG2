@@ -9,3 +9,7 @@ D
 templates/index.html,f/6/f69b8ce2e31684ae06f1b3e84821e07e3dfddb2f
 S
 #.idea/sonarlint/issuestore/index.pb,9/f/9fe84ebb15faf917b7def6236dba604453cc61e0
+G
+templates/ergebnis.html,d/9/d91059944f20ecb6b4110d9b2f8c50d9946a499e
+M
+templates/taschenrechner.html,e/2/e28863ce0bae9ab00a5bfa137ad40736d9e8080b
