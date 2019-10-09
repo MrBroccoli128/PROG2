@@ -4,10 +4,11 @@ from kurs_mgmt import *
 
 app = Flask("__main__")
 
+
 # Weiterleitung auf das Loginfenster wenn auf das Rootverzeichnis zugegriffen wird
 @app.route("/")
 def root():
-    return redirect(url_for("login"))
+    return redirect(url_for("main"))
 
 
 @app.route("/login/", methods=['GET', 'POST'])
@@ -16,7 +17,6 @@ def login():
 
         att_user = str(request.form['username'])
         att_pass = str(request.form['password'])
-
 
         if verify_login(att_user, att_pass) is True:
             flash(att_pass)
@@ -27,9 +27,15 @@ def login():
     return render_template('login.html')
 
 
-@app.route("/main/",  methods=['GET', 'POST'])
+@app.route("/main/", methods=['GET', 'POST'])
 def main():
-    return 0
+    if request.method == 'GET':
+        c_list = get_course_list()
+        return render_template('main.html', c_list=c_list.items())
+    elif request.method == 'POST':
+        return "ok"
+
+
 
 # 404 Error abfangen
 @app.errorhandler(404)

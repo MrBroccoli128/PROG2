@@ -2,6 +2,29 @@
 
 {% block body %}
 
-<h1>HALLÜ das ist die Hauptseite</h1>
+<h1>Willkommen bei der Kursauswahl</h1>
 
+{%for title, content in c_list%}
+
+<!-- Wenn der Kurs voll ist wird er nicht angezeigt -->
+{% if content[7]|length < content[5] %}
+
+<div class="card mb-3">
+  <div class="card-header">
+    Kurs  ...
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">{{title}}</h5>
+    <p class="card-text">{{content[0]}}
+      <br> Datum: {{content[1]}}
+      <br> Zeit: {{content[2]}}
+      <br> Ort: {{content[3]}}
+    </p>
+    <form class="form-signin" method="POST">
+      <button name="{{title}}" class="btn btn-primary" type="submit">Anmelden</button>
+    </form>
+  </div>
+</div>
+{%endif%}
+{%endfor%}
 {% endblock %}

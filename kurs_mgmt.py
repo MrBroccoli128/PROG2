@@ -1,6 +1,7 @@
 from json import dumps, loads
 from datetime import date, time
 
+KURSLISTE_FILENAME = "kursliste"
 
 def init_gen_kursliste():
     # Key ist der Kursname -> Problem Kurse mit gleichen Namen sind nicht möglich
@@ -29,15 +30,33 @@ def init_gen_kursliste():
     return kursliste
 
 
-kurse = init_gen_kursliste()
-
-# print(len(kurse[4]))
-
-with open("data/kursliste.json", "w") as kurs_file:
-    kurs_file.write(dumps(kurse))
-
-# with open("File/telebuch.json", "w") as telefonbuch_file:
-# telefonbuch_file.write(dumps(telefonb))
 
 
-# telefonb = loads(telefonbuch_file.read())
+
+def save_json(filename, save_file):
+    ####
+    # Funktion um das DICT als JSON auf dem Filesystem zu speichern
+    # Filename = Name des Files in welches gespeichert werden soll
+    # save_file = Beinhaltet das dict das gespeichert wird
+    ####
+    url = str("data/" + filename + ".json")
+    with open(url, "w") as file:
+        file.write(dumps(save_file))
+
+
+def load_json(filename):
+    ####
+    # Lädt ein dict aus dem JSON file, welches den filenamen hat welches übergeben wurde im pfad /data
+    ####
+    url = str("data/" + filename + ".json")
+    with open(url, "r") as file:
+        loaded_file = loads(file.read())
+    return loaded_file
+
+
+def get_course_list():
+
+    return load_json(KURSLISTE_FILENAME)
+
+
+save_json(KURSLISTE_FILENAME, init_gen_kursliste())

@@ -3,8 +3,6 @@
 	README.md,8/e/8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
 9
 	HelloW.py,9/4/94b48957885454b3b841c832d4df729ba2ddff95
-?
-static/main.css,9/e/9e59863be0d7e861fc910bb5f5102afb084c5ec5
 S
 #.idea/sonarlint/issuestore/index.pb,9/f/9fe84ebb15faf917b7def6236dba604453cc61e0
 H
@@ -59,3 +57,15 @@ C
 templates/main.html,7/0/70463c664bcf38fa5d46b8f3fd74b75dac46c512
 ;
 __init__.py,6/0/60ad4f3d2e9b04a9b0a0bb97ab6a8a4c018b785e
+E
+static/css/signin.css,a/1/a1af49023c3a7c4d007fa094da4fbf8a2bf19794
+A
+user_functions.py,5/2/526d6abb50874200b1319a58e717464aab1b97eb
+C
+data/kursliste.json,7/8/78fcdb0bc6d2be9953b2a45c92e985b04b55ceb8
+<
+kurs_mgmt.py,2/5/254f14eafac97e905950e0323c09cee7ab19f8f8
+B
+templates/404.html,6/8/68a8bfc84a821a32ae5ba7dad3051cb12d1529b3
+D
+templates/login.html,f/f/ffdb36cd67c5e5e09ba8e92b13a1dc029c7c4627

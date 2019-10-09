@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="SonarLintProjectSettings">
+    <option name="fileExclusions">
+      <list>
+        <option value="DIRECTORY:static/js" />
+        <option value="FILE:static/css/bootstrap.css" />
+        <option value="FILE:static/css/bootstrap-grid.css" />
+        <option value="FILE:static/css/bootstrap-reboot.css" />
+      </list>
+    </option>
+  </component>
+</project>
