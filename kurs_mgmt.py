@@ -65,7 +65,7 @@ def add_student(sign_vorname, sign_nachname, sign_geb, sign_address, sign_ort, c
     courselist = get_course_list()
 
     # Formatierung des eingegeben Geburtsdatums in einen tuple
-    geb = tuple(str(datetime.strptime(sign_geb, '%d.%m.%Y').strftime('%d/%m/%Y')).split('/'))
+    geb = tuple(str(datetime.strptime(sign_geb, '%Y-%m-%d').strftime('%d/%m/%Y')).split('/'))
 
     # Zusammensetzen aller Informationen zu einer Liste
     temp_list = [sign_vorname, sign_nachname, geb, sign_address, sign_ort]

@@ -46,7 +46,8 @@ def signup():
         sign_geb = str(request.form['geb'])
         sign_address = str(request.form['address'])
         sign_ort = str(request.form['ort'])
-        # Ob alle Felder ausgefüllt wurde wird in der HTML Form sichergestellt
+        # Ob alle Felder ausgefüllt wurde wird in der HTML Form überprüft
+
         add_student(sign_vorname, sign_nachname, sign_geb, sign_address, sign_ort, course)
 
         return "Erfolgreich angemeldet"
