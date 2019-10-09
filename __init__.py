@@ -8,7 +8,7 @@ def main():
     return render_template('main.html')
 
 @app.route("/", methods=['GET', 'POST'])
-def t():
+def page():
     return "hey"
 
 
