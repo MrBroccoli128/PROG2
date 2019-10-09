@@ -48,7 +48,7 @@ def signup():
 
         add_student(sign_vorname, sign_nachname, sign_geb, sign_address, sign_ort, course)
 
-        return "fick dich du Arschloch"
+        return "Erfolgreich angemeldet"
     else:
         course = request.args['course']
         return render_template('anmeldung_kurs.html', course=course)
