@@ -1,8 +1,8 @@
 from json import dumps, loads
-from datetime import date, time
+from datetime import datetime
 
-KURSLISTE_FILENAME = "kursliste"
-
+COURSELIST_FILENAME = "kursliste"
+STUDENT_LIST_LOCATION = 7
 def init_gen_kursliste():
     # Key ist der Kursname -> Problem Kurse mit gleichen Namen sind nicht möglich
     kursliste = {"Schwimmen": ["In diesem Kurs lernt man Schwimmen",  # Beschreibung
@@ -56,7 +56,25 @@ def load_json(filename):
 
 def get_course_list():
 
-    return load_json(KURSLISTE_FILENAME)
+    return load_json(COURSELIST_FILENAME)
 
 
-save_json(KURSLISTE_FILENAME, init_gen_kursliste())
+def add_student(sign_vorname, sign_nachname, sign_geb, sign_address, sign_ort, course):
+
+    # Abholen der aktuellen Daten
+    courselist = get_course_list()
+
+    # Formatierung des eingegeben Geburtsdatums in einen tuple
+    geb = tuple(str(datetime.strptime(sign_geb, '%d.%m.%Y').strftime('%d/%m/%Y')).split('/'))
+
+    # Zusammensetzen aller Informationen zu einer Liste
+    temp_list = [sign_vorname, sign_nachname, geb, sign_address, sign_ort]
+
+    # Update des Dicts
+    courselist[course][STUDENT_LIST_LOCATION].append(temp_list)
+
+    # Speichern auf das Filesystem
+    save_json(COURSELIST_FILENAME, courselist)
+
+
+#save_json(KURSLISTE_FILENAME, init_gen_kursliste())

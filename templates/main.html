@@ -10,9 +10,7 @@
 {% if content[7]|length < content[5] %}
 
 <div class="card mb-3">
-  <div class="card-header">
-    Kurs  ...
-  </div>
+
   <div class="card-body">
     <h5 class="card-title">{{title}}</h5>
     <p class="card-text">{{content[0]}}
@@ -21,7 +19,7 @@
       <br> Ort: {{content[3]}}
     </p>
     <form class="form-signin" method="POST">
-      <button name="{{title}}" class="btn btn-primary" type="submit">Anmelden</button>
+      <button name="signup" class="btn btn-primary" type="submit" value="{{title}}">Anmelden</button>
     </form>
   </div>
 </div>

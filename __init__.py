@@ -2,13 +2,13 @@ from flask import Flask, render_template, request, flash, url_for, redirect
 from user_functions import verify_login
 from kurs_mgmt import *
 
-app = Flask("__main__")
+app = Flask('__main__')
 
 
 # Weiterleitung auf das Loginfenster wenn auf das Rootverzeichnis zugegriffen wird
-@app.route("/")
+@app.route('/')
 def root():
-    return redirect(url_for("main"))
+    return redirect(url_for('main'))
 
 
 @app.route("/login/", methods=['GET', 'POST'])
@@ -21,7 +21,7 @@ def login():
         if verify_login(att_user, att_pass) is True:
             flash(att_pass)
             flash(att_user)
-            return render_template('main.html')
+            return redirect(url_for('main'))
         else:
             return render_template('login.html')
     return render_template('login.html')
@@ -33,16 +33,33 @@ def main():
         c_list = get_course_list()
         return render_template('main.html', c_list=c_list.items())
     elif request.method == 'POST':
-        return "ok"
+        return redirect(url_for('signup', course=str(request.form['signup'])))
 
+
+@app.route("/main/signup", methods=['GET', 'POST'])
+def signup():
+    if request.method == 'POST':
+        course = request.args['course']
+        sign_vorname = str(request.form['vorname'])
+        sign_nachname = str(request.form['nachname'])
+        sign_geb = str(request.form['geb'])
+        sign_address = str(request.form['address'])
+        sign_ort = str(request.form['ort'])
+
+        add_student(sign_vorname, sign_nachname, sign_geb, sign_address, sign_ort, course)
+
+        return "fick dich du Arschloch"
+    else:
+        course = request.args['course']
+        return render_template('anmeldung_kurs.html', course=course)
 
 
 # 404 Error abfangen
 @app.errorhandler(404)
 def page_not_found(e):
-    return render_template("404.html")
+    return render_template('404.html')
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     app.secret_key = 'super secret key'
     app.run(debug=True, port=5000)
