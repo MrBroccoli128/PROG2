@@ -16,10 +16,11 @@ def login():
 
         att_user = str(request.form['username'])
         att_pass = str(request.form['password'])
-        flash(att_pass)
+
 
         if verify_login(att_user, att_pass) is True:
-
+            flash(att_pass)
+            flash(att_user)
             return render_template('main.html')
         else:
             return render_template('login.html')
