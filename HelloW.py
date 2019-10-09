@@ -1,8 +1,7 @@
 from flask import Flask, render_template, request
-from flask_bootstrap import Bootstrap
 
 app = Flask("__main__")
-Bootstrap(app)
+
 @app.route('/hello')
 def hello_world():
     name = "Jonathan2"
@@ -12,6 +11,11 @@ def hello_world():
 @app.route("/test")
 def test():
     return "success"
+
+
+@app.route("/main")
+def main():
+    return render_template('main.html')
 
 
 @app.route("/", methods=['GET', 'POST'])
