@@ -29,29 +29,30 @@ def login():
 
 @app.route("/main/", methods=['GET', 'POST'])
 def main():
+    c_list = get_course_list()
     if request.method == 'GET':
-        c_list = get_course_list()
         return render_template('main.html', c_list=c_list.items())
     elif request.method == 'POST':
-        return redirect(url_for('signup', course=str(request.form['signup'])))
+        return redirect(url_for('signup', signed_course=str(request.form['signup'])))
 
 
 @app.route("/main/signup", methods=['GET', 'POST'])
 def signup():
+
     if request.method == 'POST':
-        course = request.args['course']
+        course = request.args['signed_course']
         sign_vorname = str(request.form['vorname'])
         sign_nachname = str(request.form['nachname'])
         sign_geb = str(request.form['geb'])
         sign_address = str(request.form['address'])
         sign_ort = str(request.form['ort'])
-
+        # Ob alle Felder ausgefüllt wurde wird in der HTML Form sichergestellt
         add_student(sign_vorname, sign_nachname, sign_geb, sign_address, sign_ort, course)
 
         return "Erfolgreich angemeldet"
     else:
-        course = request.args['course']
-        return render_template('anmeldung_kurs.html', course=course)
+        return render_template('anmeldung_kurs.html', c_info=get_course_list()[request.args['signed_course']],
+                               signed_course=request.args['signed_course'])
 
 
 # 404 Error abfangen
