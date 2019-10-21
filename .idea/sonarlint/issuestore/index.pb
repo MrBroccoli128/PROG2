@@ -1,8 +1,6 @@
 
 9
 	README.md,8/e/8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
-9
-	HelloW.py,9/4/94b48957885454b3b841c832d4df729ba2ddff95
 S
 #.idea/sonarlint/issuestore/index.pb,9/f/9fe84ebb15faf917b7def6236dba604453cc61e0
 H
@@ -45,12 +43,6 @@ J
 static/js/bootstrap.min.js,3/3/33cae68152853a975e2c28127f674ca0e37cfcb8
 N
 static/js/bootstrap.min.js.map,4/1/4168b0eca5b2efe57dd7a8ce6e204b20a47074fa
-K
-templates/old/ergebnis.html,f/8/f80103a716cd36792fbabcf67a83a781e4b39c17
-H
-templates/old/index.html,5/c/5c73f98fbbbde8e705e3ab3a84ab244760b080e8
-Q
-!templates/old/taschenrechner.html,9/1/91ad7f413be794ae44cc9fb02e49acdb001fa273
 E
 templates/header.html,5/6/560469858265bdf005e9583342d090c4df443c5f
 C
@@ -69,3 +61,9 @@ B
 templates/404.html,6/8/68a8bfc84a821a32ae5ba7dad3051cb12d1529b3
 D
 templates/login.html,f/f/ffdb36cd67c5e5e09ba8e92b13a1dc029c7c4627
+M
+templates/anmeldung_kurs.html,3/7/37bc10f15eb4a7d36035d3a4baed3b4bb4b18cfd
+S
+#templates/anmelde_bestaetigung.html,2/0/20ffa4076d9ff5f3f04d34a6f16f6a9cb348dc60
+@
+data/passwd.json,7/c/7c4f616272ed460a7ec536fbbbed2dd1f4ce6aee

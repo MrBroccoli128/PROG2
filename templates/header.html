@@ -8,6 +8,7 @@
     <title>PROG 2 Project</title>
     <!-- Bootstrap core CSS -->
 	<link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
+      {% block head %} {% endblock %}
   </head>
 <body>
 <div class="container" style="min-height:100% width:80%">
@@ -37,11 +38,7 @@
 	  {% endif %}
 	{% endwith %}
 
-
 {% block body %} {% endblock %}
-
-
-
 
 </div>
 

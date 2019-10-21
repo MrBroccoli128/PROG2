@@ -1,8 +1,10 @@
 from json import dumps, loads
 from datetime import datetime
 
-COURSELIST_FILENAME = "kursliste"
-STUDENT_LIST_LOCATION = 7
+# Constants
+COURSELIST_FILENAME = "kursliste"  # Name des Kurslistenfiles
+STUDENT_LIST_LOCATION = 7 # Stelle des Teilnehmer Arrays im kursliste dict
+
 def init_gen_kursliste():
     # Key ist der Kursname -> Problem Kurse mit gleichen Namen sind nicht möglich
     kursliste = {"Schwimmen": ["In diesem Kurs lernt man Schwimmen",  # Beschreibung
