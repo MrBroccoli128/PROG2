@@ -2,7 +2,7 @@
 
 {% block body %}
 
-<h1>Willkommen bei der Kursauswahl</h1>
+<h1 class="mt-3">Hallo {{session.username}}</h1>
 
 {% set cnt = [0] %} <!-- Counter, falls keine Kurse angezeigt werden soll eine ersatzmeldung gezeigt werden -->
 {%for title, content in c_list%}
@@ -30,8 +30,9 @@
 {%endfor%}
 
 {% if cnt[0] == 0 %}
-<h1>Zurzeit sind keine Kurse ausgeschrieben.</h1>
-<p>Schauen Sie später nocheinmal vorbei!</p>
+<h2>Sie sind derzeit kein Leiter von einem Kurs</h2>
+
 {%endif%}
 
+<p></p>
 {% endblock %}

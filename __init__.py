@@ -8,6 +8,11 @@
 # Session variable ist definiert. Login gegencheck funktioniert.
 # Seite der Kursleiter erstellen. Usermanagement!
 
+### SACHEN WELCHE ANDERS GEMACHT WERDEN SOLLTEN:
+# kursname nicht key des dict
+# Teilnehmer der Kurs nicht vollständig im kurs dict
+###
+
 
 from flask import Flask, render_template, request, flash, url_for, redirect, session
 from os import urandom  # Random Funktion
@@ -16,13 +21,15 @@ from kurs_mgmt import add_student, get_course_list  # Funktionen, welche mit der
 
 app = Flask('__main__')
 
+
 # Weiterleitung auf die Hauptseite wenn auf das Rootverzeichnis zugegriffen wird
 @app.route('/')
 def root():
     return redirect(url_for('main'))
 
+
 # Loginpage
-@app.route("/login/", methods=['GET', 'POST'])
+@app.route('/login/', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
 
@@ -33,7 +40,7 @@ def login():
 
             session['logged_in'] = True
             session['username'] = str(request.form['username'])
-            return redirect(url_for('main'))
+            return redirect(url_for('kursleiter'))
         else:
             # Ausgabe der Fehlermeldung
             flash("Der Benutzername oder das Passwort waren falsch")
@@ -41,8 +48,9 @@ def login():
             return render_template('login.html')
     return render_template('login.html')
 
+
 # Hauptseite
-@app.route("/main/", methods=['GET', 'POST'])
+@app.route('/main/', methods=['GET', 'POST'])
 def main():
     # Für die Darstellung der Kursübersicht müssen die Kurse aus der JSON Datei geladen werden.
     c_list = get_course_list()
@@ -52,11 +60,12 @@ def main():
     elif request.method == 'POST':
         return redirect(url_for('course_signup', signed_course=str(request.form['signup'])))
 
+
 # Anmeldung an einem Kurs
 @app.route("/main/signup/", methods=['GET', 'POST'])
 def course_signup():
     if request.method == 'POST':
-        course = request.args['signed_course'] # Variable aus der URL abgreifen
+        course = request.args['signed_course']  # Variable aus der URL abgreifen
         sign_vorname = str(request.form['vorname'])
         sign_nachname = str(request.form['nachname'])
         sign_geb = str(request.form['geb'])
@@ -72,11 +81,21 @@ def course_signup():
         return render_template('anmeldung_kurs.html', c_info=get_course_list()[request.args['signed_course']],
                                signed_course=request.args['signed_course'])
 
-# Wenn der User logout klickt soll die Session verworfen werden
 
-def drop_session():
-    session.pop('logged_in', False)
-    session.pop('username', None)
+@app.route('/kursleiter/', methods=['GET', 'POST'])
+def kursleiter():
+
+    c_list = get_course_list()
+    return render_template('kursleiter.html', c_list=c_list.items())
+
+
+# Wenn der User logout klickt soll die Session verworfen werden
+@app.route("/logout/")
+def logout():
+    flash("Sie haben sich sich ausgeloggt!")
+    session.clear()
+    return redirect(url_for('main'))
+
 
 # 404 Error abfangen
 @app.errorhandler(404)

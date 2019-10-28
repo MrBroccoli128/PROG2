@@ -67,3 +67,5 @@ S
 #templates/anmelde_bestaetigung.html,2/0/20ffa4076d9ff5f3f04d34a6f16f6a9cb348dc60
 @
 data/passwd.json,7/c/7c4f616272ed460a7ec536fbbbed2dd1f4ce6aee
+I
+templates/kursleiter.html,8/c/8ce48287b9ab2675082041d5ea3741d96ef940fb

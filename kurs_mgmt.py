@@ -9,7 +9,7 @@ def init_gen_kursliste():
     # Key ist der Kursname -> Problem Kurse mit gleichen Namen sind nicht möglich
     kursliste = {"Schwimmen": ["In diesem Kurs lernt man Schwimmen",  # Beschreibung
                                (2020, 6, 24),  # Datum
-                               (18, 0, 0),  # Zeit
+                               (18, 00, 00),  # Zeit
                                "Schwimmbad Chur",  # Ort
                                3,  # MIN Teilnehmer Zahl
                                10,  # MAX Teilnehmer Zahl
@@ -19,7 +19,7 @@ def init_gen_kursliste():
                                 ]],
                  "Mountainbiken": ["Fahrrad fahren in den Bergen",
                                    (2020, 9, 2),
-                                   (17, 30, 0),  # Zeit
+                                   (17, 30, 00),  # Zeit
                                    "Laax Talstation",
                                    2,
                                    8,
@@ -80,3 +80,5 @@ def add_student(sign_vorname, sign_nachname, sign_geb, sign_address, sign_ort, c
 
 
 #save_json(KURSLISTE_FILENAME, init_gen_kursliste())
+
+init_gen_kursliste()
