@@ -59,6 +59,10 @@ def get_course_list():
     return load_json(COURSELIST_FILENAME)
 
 
+def save_course_list(courselist):
+    save_json(COURSELIST_FILENAME, courselist)
+
+
 def add_student(sign_vorname, sign_nachname, sign_geb, sign_address, sign_ort, course):
     # Abholen der aktuellen Daten
     courselist = get_course_list()
@@ -73,7 +77,7 @@ def add_student(sign_vorname, sign_nachname, sign_geb, sign_address, sign_ort, c
     courselist[course][STUDENT_LIST_LOCATION].append(temp_list)
 
     # Speichern auf das Filesystem
-    save_json(COURSELIST_FILENAME, courselist)
+    save_course_list(courselist)
 
 
 def add_kurs(i_titel, i_beschreibung, i_datum, i_zeit, i_minT, i_maxT, i_ort, kursleiter):
@@ -87,13 +91,13 @@ def add_kurs(i_titel, i_beschreibung, i_datum, i_zeit, i_minT, i_maxT, i_ort, ku
 
     courselist[i_titel] = temp_list
 
-    save_json(COURSELIST_FILENAME, courselist)
+    save_course_list(courselist)
 
 def del_kurs(kursname):
     courselist = get_course_list()
 
     del courselist[kursname]
-    save_json(COURSELIST_FILENAME, courselist)
+    save_course_list(courselist)
 #save_json(COURSELIST_FILENAME, init_gen_kursliste())
 
 # init_gen_kursliste()

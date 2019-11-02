@@ -55,33 +55,20 @@ def login():
 def main():
     # Für die Darstellung der Kursübersicht müssen die Kurse aus der JSON Datei geladen werden.
     c_list = get_course_list()
-    if request.method == 'GET':
-        return render_template('main.html', c_list=c_list.items())
     # Bei einem POST kann es sich nur um eine versuchte Anmeldung handeln.
-    elif request.method == 'POST':
-        return redirect(url_for('course_signup', signed_course=str(request.form['signup'])))
-
-
-# Anmeldung an einem Kurs
-@app.route("/main/signup/", methods=['GET', 'POST'])
-def course_signup():
     if request.method == 'POST':
-        course = request.args['signed_course']  # Variable aus der URL abgreifen
+        course = str(request.form['btn'])
         sign_vorname = str(request.form['vorname'])
         sign_nachname = str(request.form['nachname'])
         sign_geb = str(request.form['geb'])
         sign_address = str(request.form['address'])
         sign_ort = str(request.form['ort'])
-        # Ob alle Felder ausgefüllt wurde wird in der HTML Form überprüft
 
         add_student(sign_vorname, sign_nachname, sign_geb, sign_address, sign_ort, course)
 
-        return render_template('anmelde_bestaetigung.html', signed_course=course, sign_vorname=sign_vorname,
-                               sign_nachname=sign_nachname)
-    else:
-        return render_template('anmeldung_kurs.html', c_info=get_course_list()[request.args['signed_course']],
-                               signed_course=request.args['signed_course'])
+        flash("Sich haben sich erfolgreich für den Kurs " + course + " angemeldet!")
 
+    return render_template('main.html', c_list=c_list.items())
 
 @app.route('/kursleiter/', methods=['GET', 'POST'])
 def kursleiter():
@@ -101,10 +88,7 @@ def kursleiter():
                 add_kurs(i_titel, i_beschreibung, i_datum, i_zeit, i_minT, i_maxT, i_ort, session['username'])
         elif "delete" in request.form["btn"]:
             coursename = request.form["btn"].split(";")
-            print(coursename[1])
             del_kurs(coursename[1])
-
-
 
     c_list = get_course_list()
     return render_template('kursleiter.html', c_list=c_list.items())

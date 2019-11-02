@@ -48,7 +48,5 @@ def create_user(username, password):
     else:
         return False
 
-print(verify_login("Administrator", "passwort"))
-# create_init_userdb()
 
 

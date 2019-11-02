@@ -6,12 +6,12 @@
 
 
 <p>
-    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample"
-            aria-expanded="false" aria-controls="collapseExample">
+    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#neuerkurs"
+            aria-expanded="false" aria-controls="neuerkurs">
         Neuer Kurs erstellen
     </button>
 </p>
-<div class="collapse" id="collapseExample">
+<div class="collapse" id="neuerkurs">
     <div class="card card-body mb-3">
         <h5 class="card-title">Neuer Kurs</h5>
 
@@ -68,10 +68,13 @@
 {% set cnt = [0] %} <!-- Counter, falls keine Kurse angezeigt werden soll eine ersatzmeldung gezeigt werden -->
 {%for title, content in c_list%}
 
-<!-- Wenn der Kurs voll ist wird er nicht angezeigt -->
-{% if content[7]|length < content[5] %}
+<!-- Wenn der Kurs voll ist wird er grün marktiert -->
 
+{% if content[7]|length == content[5]%}
+<div class="card mb-3 border-success">
+    {%else%}
 <div class="card mb-3">
+    {%endif%}
 
     <div class="card-body">
         <h5 class="card-title">{{title}}</h5>
@@ -80,14 +83,48 @@
             <br> Zeit: {{content[2][0]}}:{{content[2][1]}} UHR
             <br> Ort: {{content[3]}}
         </p>
-        <form class="form-signin" method="POST">
-            <button name="btn" class="btn btn-primary" type="submit" value="{{title}}">Teilnehmer</button>
+        <form class="form-anzeigeteilnehmer" method="POST">
+
+            <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#anzeigeteilnehmer{{cnt[0]}}"
+                    aria-expanded="false" aria-controls="anzeigeteilnehmer">
+                Teilnehmer
+            </button>
+            <div class="collapse" id="anzeigeteilnehmer{{cnt[0]}}">
+
+                {% if content[7]|length != 0%}
+                <table class="card-text table mt-3 mb-3">
+                    <thead>
+                    <th scope="col">Vorname</th>
+                    <th scope="col">Nachname</th>
+                    <th scope="col">Adresse</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {%for student in content[7] %}
+                    <tr>
+
+                        <td>{{student[0]}}</td>
+                        <td>{{student[1]}}</td>
+                        <td>{{student[3]}}, {{student[4]}} </td>
+                    </tr>
+                    {%endfor%}
+                </table>
+
+                {%else%}
+                Für diesen Kurs hat sich bisher noch niemand angemeldet.
+                {%endif%}
+
+
+
+
+            </div>
+
             <button name="btn" class="btn btn-danger" type="submit" value="delete;{{title}}">Kurs löschen!</button>
+
         </form>
     </div>
 </div>
 {% if cnt.append(cnt.pop() + 1) %}{% endif %}
-{%endif%}
 
 {%endfor%}
 
