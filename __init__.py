@@ -17,7 +17,8 @@
 from flask import Flask, render_template, request, flash, url_for, redirect, session
 from os import urandom  # Random Funktion
 from user_functions import verify_login  # Enthält die Funktionen, welche mit dem Userhandling in Verbindung stehen
-from kurs_mgmt import add_student, get_course_list  # Funktionen, welche mit der Kursadministration zu tun haben
+from kurs_mgmt import add_student, get_course_list, \
+    add_kurs, del_kurs  # Funktionen, welche mit der Kursadministration zu tun haben
 
 app = Flask('__main__')
 
@@ -84,6 +85,26 @@ def course_signup():
 
 @app.route('/kursleiter/', methods=['GET', 'POST'])
 def kursleiter():
+    if request.method == 'POST':
+        if "create" in request.form["btn"]:
+            i_titel = str(request.form['title'])
+            i_beschreibung = str(request.form['beschreibung'])
+            i_datum = str(request.form['datum'])
+            i_zeit = str(request.form['zeit'])
+            i_minT = int(request.form['minT'])
+            i_maxT = int(request.form['maxT'])
+            i_ort = str(request.form['ort'])
+
+            if i_minT > i_maxT:
+                flash("Mindestanzahl ist grösser als die Maximalanzahl von Teilnehmer")
+            else:
+                add_kurs(i_titel, i_beschreibung, i_datum, i_zeit, i_minT, i_maxT, i_ort, session['username'])
+        elif "delete" in request.form["btn"]:
+            coursename = request.form["btn"].split(";")
+            print(coursename[1])
+            del_kurs(coursename[1])
+
+
 
     c_list = get_course_list()
     return render_template('kursleiter.html', c_list=c_list.items())
@@ -101,6 +122,11 @@ def logout():
 @app.errorhandler(404)
 def page_not_found(e):
     return render_template('404.html')
+
+
+@app.errorhandler(400)
+def error_400(e):
+    return render_template('400.html')
 
 
 if __name__ == '__main__':

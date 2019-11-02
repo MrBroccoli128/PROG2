@@ -1,9 +1,11 @@
 from json import dumps, loads
 from datetime import datetime
+from user_functions import load_user
 
 # Constants
 COURSELIST_FILENAME = "kursliste"  # Name des Kurslistenfiles
-STUDENT_LIST_LOCATION = 7 # Stelle des Teilnehmer Arrays im kursliste dict
+STUDENT_LIST_LOCATION = 7  # Stelle des Teilnehmer Arrays im kursliste dict
+
 
 def init_gen_kursliste():
     # Key ist der Kursname -> Problem Kurse mit gleichen Namen sind nicht möglich
@@ -32,9 +34,6 @@ def init_gen_kursliste():
     return kursliste
 
 
-
-
-
 def save_json(filename, save_file):
     ####
     # Funktion um das DICT als JSON auf dem Filesystem zu speichern
@@ -57,12 +56,10 @@ def load_json(filename):
 
 
 def get_course_list():
-
     return load_json(COURSELIST_FILENAME)
 
 
 def add_student(sign_vorname, sign_nachname, sign_geb, sign_address, sign_ort, course):
-
     # Abholen der aktuellen Daten
     courselist = get_course_list()
 
@@ -79,6 +76,24 @@ def add_student(sign_vorname, sign_nachname, sign_geb, sign_address, sign_ort, c
     save_json(COURSELIST_FILENAME, courselist)
 
 
-#save_json(KURSLISTE_FILENAME, init_gen_kursliste())
+def add_kurs(i_titel, i_beschreibung, i_datum, i_zeit, i_minT, i_maxT, i_ort, kursleiter):
+    user_list = load_user()
+    courselist = get_course_list()
 
-init_gen_kursliste()
+    l_name = str(user_list[kursleiter][1] + " " + user_list[kursleiter][2])
+    datum = tuple(str(datetime.strptime(i_datum, '%Y-%m-%d').strftime('%d/%m/%Y')).split('/'))
+    zeit = tuple(i_zeit.split(":"))
+    temp_list = [i_beschreibung, datum, zeit, i_ort, i_minT, i_maxT, l_name, []]
+
+    courselist[i_titel] = temp_list
+
+    save_json(COURSELIST_FILENAME, courselist)
+
+def del_kurs(kursname):
+    courselist = get_course_list()
+
+    del courselist[kursname]
+    save_json(COURSELIST_FILENAME, courselist)
+#save_json(COURSELIST_FILENAME, init_gen_kursliste())
+
+# init_gen_kursliste()

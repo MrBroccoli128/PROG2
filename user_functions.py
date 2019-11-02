@@ -21,7 +21,7 @@ def load_user():
 
 
 def verify_login(user, password):
-    # Wenn irgendetwas falsch ist soll False zurückgegeben werden.
+    # Wenn irgendetwas falsch ist soll False zurückgegeben werden. z.B wenn User nicht gefunden wird
     try:
         f_info = load_user()
         for k, v in f_info.items():
