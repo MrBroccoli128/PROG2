@@ -25,6 +25,7 @@
                 aria-expanded="false" aria-controls="anmelden">
             Anmelden
         </button>
+        <!-- Anmeldung an den Kurs -->
         <div class="collapse" id="anmelden{{cnt[0]}}">
             <form class="form-signin mt-3" method="POST">
                 <div class="form-row">
@@ -64,11 +65,13 @@
 
     </div>
 </div>
+<!-- Counter für Kurse -->
 {% if cnt.append(cnt.pop() + 1) %}{% endif %}
 {%endif%}
 
 {%endfor%}
 
+<!-- Ersatzmeldung-->
 {% if cnt[0] == 0 %}
 <h1>Zurzeit sind keine Kurse ausgeschrieben.</h1>
 <p>Schauen Sie später nocheinmal vorbei!</p>

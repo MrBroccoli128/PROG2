@@ -8,6 +8,7 @@
     <title>PROG 2 Project</title>
     <!-- Bootstrap core CSS -->
     <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
+    <!-- Falls zusätzliche Befehle im Header mitgegeben werden sollen -->
     {% block head %} {% endblock %}
 </head>
 <body>
@@ -26,6 +27,7 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#">Features</a>
                 </li>
+                <!-- Diese Menupunkte werden nur angezeigt wenn man angemeldet ist -->
                 {% if session.logged_in %}
                 <li class="nav-item">
                     <a class="nav-link" href="/kursleiter/">Kursleiter</a>
@@ -44,7 +46,7 @@
             {% endif %}
         </div>
     </nav>
-
+    <!-- Falls es flashed messages gibt, werden diese hier angezeigt -->
     {% with messages = get_flashed_messages() %}
     {% if messages %}
     {% for message in messages %}
@@ -57,10 +59,13 @@
     {% endif %}
     {% endwith %}
 
+    <!-- Block für den template input -->
     {% block body %} {% endblock %}
 
 </div>
 
+
+<!-- jQuery und Bootstrap files, lokal vorhanden -->
 <script src="{{ url_for('static', filename='js/jquery-1.11.1.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
 

@@ -36,9 +36,9 @@ def login():
 
         att_user = str(request.form['username'])
         att_pass = str(request.form['password'])
-
+        # Überprüfung des Logins
         if verify_login(att_user, att_pass) is True:
-
+            # Falls korrekt, wird eine Session mit Cookie erstellt
             session['logged_in'] = True
             session['username'] = str(request.form['username'])
             return redirect(url_for('kursleiter'))
@@ -55,7 +55,7 @@ def login():
 def main():
     # Für die Darstellung der Kursübersicht müssen die Kurse aus der JSON Datei geladen werden.
     c_list = get_course_list()
-    # Bei einem POST kann es sich nur um eine versuchte Anmeldung handeln.
+    # Bei einem POST kann es sich nur um eine Anmeldung handeln.
     if request.method == 'POST':
         course = str(request.form['btn'])
         sign_vorname = str(request.form['vorname'])
@@ -73,6 +73,7 @@ def main():
 @app.route('/kursleiter/', methods=['GET', 'POST'])
 def kursleiter():
     if request.method == 'POST':
+        # Ein POST aus dem Button mit dem value create bedeutet die Erstellung eines neuen Kurses
         if "create" in request.form["btn"]:
             i_titel = str(request.form['title'])
             i_beschreibung = str(request.form['beschreibung'])
@@ -81,15 +82,18 @@ def kursleiter():
             i_minT = int(request.form['minT'])
             i_maxT = int(request.form['maxT'])
             i_ort = str(request.form['ort'])
-
+            # Die maximale Anzahl Teilnehmer muss grösser sein als die Minimal Anzahl
             if i_minT > i_maxT:
                 flash("Mindestanzahl ist grösser als die Maximalanzahl von Teilnehmer")
             else:
+                # Kurs wird mithilfe der Funktion hinzugefügt
                 add_kurs(i_titel, i_beschreibung, i_datum, i_zeit, i_minT, i_maxT, i_ort, session['username'])
+        # Ein PIST mit dem Button delete bedeutet, das löschen eines kurses
         elif "delete" in request.form["btn"]:
             coursename = request.form["btn"].split(";")
+            # Übergabe des Kursnamens an die Löschfunktio
             del_kurs(coursename[1])
-
+    # Darstellen der aktuellen Kursübersicht
     c_list = get_course_list()
     return render_template('kursleiter.html', c_list=c_list.items())
 
@@ -108,6 +112,7 @@ def page_not_found(e):
     return render_template('404.html')
 
 
+# 4040Error abfangen
 @app.errorhandler(400)
 def error_400(e):
     return render_template('400.html')

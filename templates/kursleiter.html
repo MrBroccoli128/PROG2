@@ -11,6 +11,8 @@
         Neuer Kurs erstellen
     </button>
 </p>
+
+<!-- Card für die Erstellung eines neuen Kurses -->
 <div class="collapse" id="neuerkurs">
     <div class="card card-body mb-3">
         <h5 class="card-title">Neuer Kurs</h5>
@@ -57,7 +59,8 @@
                     <label for="inputCity">Ort</label>
                     <input type="text" class="form-control" id="inputCity" name="ort" required>
                 </div>
-            </div>
+            </div><!-- Da es auf dieser Seite mehrere verschiedene POSTs gibt und alle über einen Button
+             ausgelöst werden, werden diese mithilfe des values unterschieden -->
             <button name="btn" type="submit" class="btn btn-primary" value="create">Erstellen</button>
         </form>
 
@@ -84,13 +87,13 @@
             <br> Ort: {{content[3]}}
         </p>
         <form class="form-anzeigeteilnehmer" method="POST">
-
+            <!-- Damit jeder Button richtig angesprochen werden kann, wird der Counter als ID mitgegeben-->
             <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#anzeigeteilnehmer{{cnt[0]}}"
                     aria-expanded="false" aria-controls="anzeigeteilnehmer">
                 Teilnehmer
             </button>
             <div class="collapse" id="anzeigeteilnehmer{{cnt[0]}}">
-
+                <!-- Wenn sich noch niemand am Kurs angemeldet hat wird eine Ersatzmeldung angezeigt -->
                 {% if content[7]|length != 0%}
                 <table class="card-text table mt-3 mb-3">
                     <thead>
@@ -111,6 +114,7 @@
                 </table>
 
                 {%else%}
+                <!-- Ersatzmeldung-->
                 Für diesen Kurs hat sich bisher noch niemand angemeldet.
                 {%endif%}
 
@@ -118,20 +122,21 @@
 
 
             </div>
-
+            <!-- Löschen des aktuellen Kurses -->
             <button name="btn" class="btn btn-danger" type="submit" value="delete;{{title}}">Kurs löschen!</button>
 
         </form>
     </div>
 </div>
+    <!-- Counter zur Überprüfung, wie viel Kurse dargestellt wurden -->
 {% if cnt.append(cnt.pop() + 1) %}{% endif %}
 
 {%endfor%}
 
+    <!-- Falls keine Kurse vorhanden sind wird eine Ersatzmeldung dargestellt -->
 {% if cnt[0] == 0 %}
 <h2>Sie sind derzeit kein Leiter von einem Kurs</h2>
 
 {%endif%}
 
-<p></p>
 {% endblock %}

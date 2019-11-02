@@ -4,6 +4,7 @@ from json import dumps, loads
 PASSWD_FILEPATH = "data/passwd.json"
 
 
+# Initiale User Datenbank
 def create_init_userdb():
     users = {"Administrator": [sha512_crypt.hash('passwort'),
                                "Admini", #  Vorname
@@ -13,6 +14,7 @@ def create_init_userdb():
         file.write(dumps(users))
 
 
+# Gibt die aktuelle Userliste zurück
 def load_user():
     with open(PASSWD_FILEPATH, "r") as file:
         loaded_file = loads(file.read())
