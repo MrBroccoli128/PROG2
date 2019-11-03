@@ -61,11 +61,11 @@ B
 templates/404.html,6/8/68a8bfc84a821a32ae5ba7dad3051cb12d1529b3
 D
 templates/login.html,f/f/ffdb36cd67c5e5e09ba8e92b13a1dc029c7c4627
-M
-templates/anmeldung_kurs.html,3/7/37bc10f15eb4a7d36035d3a4baed3b4bb4b18cfd
-S
-#templates/anmelde_bestaetigung.html,2/0/20ffa4076d9ff5f3f04d34a6f16f6a9cb348dc60
 @
 data/passwd.json,7/c/7c4f616272ed460a7ec536fbbbed2dd1f4ce6aee
 I
 templates/kursleiter.html,8/c/8ce48287b9ab2675082041d5ea3741d96ef940fb
+B
+templates/400.html,0/0/0060057288b75ee146427b5d487f35892d99c154
+J
+static/js/jquery-1.11.1.js,b/2/b2b987fd6517ed3ca3b1beca2e552a84f3813727

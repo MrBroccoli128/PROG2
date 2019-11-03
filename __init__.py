@@ -4,11 +4,9 @@
 # Browser: Firefox 69.0.2 x64
 #####
 ####
-# NEXT STEP:
-# Session variable ist definiert. Login gegencheck funktioniert.
-# Seite der Kursleiter erstellen. Usermanagement!
 
-### SACHEN WELCHE ANDERS GEMACHT WERDEN SOLLTEN:
+
+### SACHEN WELCHE NÄCHSTES MAL ANDERS GEMACHT WERDEN:
 # kursname nicht key des dict
 # Teilnehmer der Kurs nicht vollständig im kurs dict
 ###
@@ -33,7 +31,6 @@ def root():
 @app.route('/login/', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
-
         att_user = str(request.form['username'])
         att_pass = str(request.form['password'])
         # Überprüfung des Logins
@@ -69,6 +66,7 @@ def main():
         flash("Sich haben sich erfolgreich für den Kurs " + course + " angemeldet!")
 
     return render_template('main.html', c_list=c_list.items())
+
 
 @app.route('/kursleiter/', methods=['GET', 'POST'])
 def kursleiter():
