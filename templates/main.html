@@ -5,6 +5,8 @@
 <h1>Willkommen bei der Kursauswahl</h1>
 
 {% set cnt = [0] %} <!-- Counter, falls keine Kurse angezeigt werden soll eine ersatzmeldung gezeigt werden -->
+
+<!-- Schleife für jeden Kurs der sich in der Liste befindet -->
 {%for title, content in c_list%}
 
 <!-- Wenn der Kurs voll ist wird er nicht angezeigt -->
@@ -71,9 +73,10 @@
 
 {%endfor%}
 
+
 <!-- Ersatzmeldung-->
 {% if cnt[0] == 0 %}
-<h1>Zurzeit sind keine Kurse ausgeschrieben.</h1>
+<h3>Zurzeit sind keine Kurse ausgeschrieben.</h3>
 <p>Schauen Sie später nocheinmal vorbei!</p>
 {%endif%}
 

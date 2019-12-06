@@ -69,10 +69,10 @@
 
 
 {% set cnt = [0] %} <!-- Counter, falls keine Kurse angezeigt werden soll eine ersatzmeldung gezeigt werden -->
+<!-- Schleife für jeden Kurs der sich in der Liste befindet -->
 {%for title, content in c_list%}
 
 <!-- Wenn der Kurs voll ist wird er grün marktiert -->
-
 {% if content[7]|length == content[5]%}
 <div class="card mb-3 border-success">
     {%else%}
@@ -80,8 +80,8 @@
     {%endif%}
 
     <div class="card-body">
-        <h5 class="card-title">{{title}}</h5>
-        <p class="card-text">{{content[0]}}
+        <h5 class="card-title">{{title}}</h5>  <!-- Kursname -->
+        <p class="card-text">{{content[0]}}  <!-- Kursbeschreibung -->
             <br> Datum: {{content[1][2]}}.{{content[1][1]}}.{{content[1][0]}}
             <br> Zeit: {{content[2][0]}}:{{content[2][1]}} UHR
             <br> Ort: {{content[3]}}
@@ -103,12 +103,12 @@
                     </tr>
                     </thead>
                     <tbody>
+                    <!-- For Schleife für jeden Student den der sich in Liste befindet -->
                     {%for student in content[7] %}
                     <tr>
-
-                        <td>{{student[0]}}</td>
-                        <td>{{student[1]}}</td>
-                        <td>{{student[3]}}, {{student[4]}} </td>
+                        <td>{{student[0]}}</td>  <!-- Vorname -->
+                        <td>{{student[1]}}</td>  <!-- Nachname -->
+                        <td>{{student[3]}}, {{student[4]}}</td>  <!-- Strasse, Ort -->
                     </tr>
                     {%endfor%}
                 </table>

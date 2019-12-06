@@ -54,6 +54,7 @@ def main():
     c_list = get_course_list()
     # Bei einem POST kann es sich nur um eine Anmeldung handeln.
     if request.method == 'POST':
+        # Eine Überprüfung der Werte ist nicht nötig, da alle Felder im HTML auf required stehen.
         course = str(request.form['btn'])
         sign_vorname = str(request.form['vorname'])
         sign_nachname = str(request.form['nachname'])
@@ -61,13 +62,15 @@ def main():
         sign_address = str(request.form['address'])
         sign_ort = str(request.form['ort'])
 
+        # Aufruf der Funktion um den neuen Teilnehmer am Kurs anzumelden
         add_student(sign_vorname, sign_nachname, sign_geb, sign_address, sign_ort, course)
 
         flash("Sich haben sich erfolgreich für den Kurs " + course + " angemeldet!")
-
+    # Ausgeben der Hauptseite mit den aktuellen verfügbaren Kursen
     return render_template('main.html', c_list=c_list.items())
 
 
+# Route für die Kursleiteransicht
 @app.route('/kursleiter/', methods=['GET', 'POST'])
 def kursleiter():
     if request.method == 'POST':
@@ -89,7 +92,7 @@ def kursleiter():
         # Ein PIST mit dem Button delete bedeutet, das löschen eines kurses
         elif "delete" in request.form["btn"]:
             coursename = request.form["btn"].split(";")
-            # Übergabe des Kursnamens an die Löschfunktio
+            # Übergabe des Kursnamens an die Löschfunktion
             del_kurs(coursename[1])
     # Darstellen der aktuellen Kursübersicht
     c_list = get_course_list()
@@ -110,7 +113,7 @@ def page_not_found(e):
     return render_template('404.html')
 
 
-# 4040Error abfangen
+# 400 Error abfangen
 @app.errorhandler(400)
 def error_400(e):
     return render_template('400.html')

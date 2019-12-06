@@ -23,11 +23,11 @@ Je nach Aufwand könnte noch ein Export implementiert werden, der heruntergelade
 2. Erarbeiten der Datenstruktur -> 
     kurs_mgmt.py Funktion init_gen_kursliste, mithilfe dieser Funktion befülle ich initial meine JSON Datei, welche als weitere Grundlage dient.
 
-## Feature Beschrieb
+## Featurebeschrieb
 
 ### Hauptseite / Main
 - Anzeige aller Kurse, welche noch nicht voll sind
-- Anmeldung am Kurs für teilnehmer
+- Anmeldung am Kurs für Teilnehmer
 
 ### Login
 - Anmeldung mit User und Passwort, Passwort ist gespeichert als sha512 Hash
