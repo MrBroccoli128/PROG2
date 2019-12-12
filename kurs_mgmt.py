@@ -118,6 +118,6 @@ def del_kurs(kursname):
     save_course_list(courselist)
 
 # Unten stehende Zeile auskommentieren damit die initialen Kurse beim start generiert werden
-#save_json(COURSELIST_FILENAME, init_gen_kursliste())
+# save_json(COURSELIST_FILENAME, init_gen_kursliste())
 
 # init_gen_kursliste()

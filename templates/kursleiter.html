@@ -76,67 +76,66 @@
 {% if content[7]|length == content[5]%}
 <div class="card mb-3 border-success">
     {%else%}
-<div class="card mb-3">
-    {%endif%}
+    <div class="card mb-3">
+        {%endif%}
 
-    <div class="card-body">
-        <h5 class="card-title">{{title}}</h5>  <!-- Kursname -->
-        <p class="card-text">{{content[0]}}  <!-- Kursbeschreibung -->
-            <br> Datum: {{content[1][0]}}.{{content[1][1]}}.{{content[1][2]}}
-            <br> Zeit: {{content[2][0]}}:{{content[2][1]}} UHR
-            <br> Ort: {{content[3]}}
-        </p>
-        <form class="form-anzeigeteilnehmer" method="POST">
-            <!-- Damit jeder Button richtig angesprochen werden kann, wird der Counter als ID mitgegeben-->
-            <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#anzeigeteilnehmer{{cnt[0]}}"
-                    aria-expanded="false" aria-controls="anzeigeteilnehmer">
-                Teilnehmer
-            </button>
-            <div class="collapse" id="anzeigeteilnehmer{{cnt[0]}}">
-                <!-- Wenn sich noch niemand am Kurs angemeldet hat wird eine Ersatzmeldung angezeigt -->
-                {% if content[7]|length != 0%}
-                <table class="card-text table mt-3 mb-3">
-                    <thead>
-                    <th scope="col">Vorname</th>
-                    <th scope="col">Nachname</th>
-                    <th scope="col">Adresse</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <!-- For Schleife für jeden Student den der sich in Liste befindet -->
-                    {%for student in content[7] %}
-                    <tr>
-                        <td>{{student[0]}}</td>  <!-- Vorname -->
-                        <td>{{student[1]}}</td>  <!-- Nachname -->
-                        <td>{{student[3]}}, {{student[4]}}</td>  <!-- Strasse, Ort -->
-                    </tr>
-                    {%endfor%}
-                </table>
+        <div class="card-body">
+            <h5 class="card-title">{{title}}</h5>  <!-- Kursname -->
+            <p class="card-text">{{content[0]}}  <!-- Kursbeschreibung -->
+                <br> Datum: {{content[1][0]}}.{{content[1][1]}}.{{content[1][2]}}
+                <br> Zeit: {{content[2][0]}}:{{content[2][1]}} UHR
+                <br> Ort: {{content[3]}}
+            </p>
+            <form class="form-anzeigeteilnehmer" method="POST">
+                <!-- Damit jeder Button richtig angesprochen werden kann, wird der Counter als ID mitgegeben-->
+                <button class="btn btn-primary" type="button" data-toggle="collapse"
+                        data-target="#anzeigeteilnehmer{{cnt[0]}}"
+                        aria-expanded="false" aria-controls="anzeigeteilnehmer">
+                    Teilnehmer
+                </button>
+                <div class="collapse" id="anzeigeteilnehmer{{cnt[0]}}">
+                    <!-- Wenn sich noch niemand am Kurs angemeldet hat wird eine Ersatzmeldung angezeigt -->
+                    {% if content[7]|length != 0%}
+                    <table class="card-text table mt-3 mb-3">
+                        <thead>
+                        <th scope="col">Vorname</th>
+                        <th scope="col">Nachname</th>
+                        <th scope="col">Adresse</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <!-- For Schleife für jeden Student den der sich in Liste befindet -->
+                        {%for student in content[7] %}
+                        <tr>
+                            <td>{{student[0]}}</td>  <!-- Vorname -->
+                            <td>{{student[1]}}</td>  <!-- Nachname -->
+                            <td>{{student[3]}}, {{student[4]}}</td>  <!-- Strasse, Ort -->
+                        </tr>
+                        {%endfor%}
+                    </table>
 
-                {%else%}
-                <!-- Ersatzmeldung-->
-                Für diesen Kurs hat sich bisher noch niemand angemeldet.
-                {%endif%}
+                    {%else%}
+                    <!-- Ersatzmeldung-->
+                    Für diesen Kurs hat sich bisher noch niemand angemeldet.
+                    {%endif%}
 
 
+                </div>
+                <!-- Löschen des aktuellen Kurses -->
+                <button name="btn" class="btn btn-danger" type="submit" value="delete;{{title}}">Kurs löschen!</button>
 
-
-            </div>
-            <!-- Löschen des aktuellen Kurses -->
-            <button name="btn" class="btn btn-danger" type="submit" value="delete;{{title}}">Kurs löschen!</button>
-
-        </form>
+            </form>
+        </div>
     </div>
-</div>
     <!-- Counter zur Überprüfung, wie viel Kurse dargestellt wurden -->
-{% if cnt.append(cnt.pop() + 1) %}{% endif %}
+    {% if cnt.append(cnt.pop() + 1) %}{% endif %}
 
-{%endfor%}
+    {%endfor%}
 
     <!-- Falls keine Kurse vorhanden sind wird eine Ersatzmeldung dargestellt -->
-{% if cnt[0] == 0 %}
-<h2>Sie sind derzeit kein Leiter von einem Kurs</h2>
+    {% if cnt[0] == 0 %}
+    <h2>Sie sind derzeit kein Leiter von einem Kurs</h2>
 
-{%endif%}
+    {%endif%}
 
-{% endblock %}
+    {% endblock %}

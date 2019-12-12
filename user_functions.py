@@ -9,14 +9,12 @@ PASSWD_FILEPATH = "data/passwd.json"  # Pfad zur JSON datei
 # Diese Funktion kann für die Initialisierung verwendet werden. Damit befindet sich nur der Admin User im system
 def create_init_userdb():
     users = {"Administrator": [sha512_crypt.hash('passwort'),
-                               "Admini", #  Vorname
-                               "Strator"]} #  Nachname
+                               "Admini",  # Vorname
+                               "Strator"]}  # Nachname
 
     with open(PASSWD_FILEPATH, "w") as file:
         file.write(dumps(users))
 
-
-create_init_userdb()
 # Gibt die aktuelle Userliste zurück
 def load_user():
     with open(PASSWD_FILEPATH, "r") as file:
@@ -44,6 +42,3 @@ def verify_login(user, password):
     # Falls im Try ein Fehler passiert, False
     except:
         return False
-
-
-
