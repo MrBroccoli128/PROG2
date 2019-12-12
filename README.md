@@ -32,6 +32,7 @@ Je nach Aufwand könnte noch ein Export implementiert werden, der heruntergelade
 ### Login
 - Anmeldung mit User und Passwort, Passwort ist gespeichert als sha512 Hash
 - Session mit Cookie wird erstellt.
+- Username: Administrator Passwort: passwort
 
 ### Kursleiter übersicht
 - Anzeige aller Kurse

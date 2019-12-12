@@ -17,7 +17,7 @@
     <div class="card-body">
         <h5 class="card-title">{{title}}</h5>
         <p class="card-text">{{content[0]}}
-            <br> Datum: {{content[1][2]}}.{{content[1][1]}}.{{content[1][0]}}
+            <br> Datum: {{content[1][0]}}.{{content[1][1]}}.{{content[1][2]}}
             <br> Zeit: {{content[2][0]}}:{{content[2][1]}} UHR
             <br> Ort: {{content[3]}}
         </p>
@@ -60,6 +60,7 @@
                         <input type="text" class="form-control" id="inputCity" name="ort" required>
                     </div>
                 </div>
+                <!-- Fuer die Identifikation des Kurses wird der Name, welcher der Key des Kurs Dict ist, mitgegeben -->
                 <button name="btn" value="{{title}}" type="submit" class="btn btn-primary">Sign in</button>
             </form>
 
@@ -72,7 +73,6 @@
 {%endif%}
 
 {%endfor%}
-
 
 <!-- Ersatzmeldung-->
 {% if cnt[0] == 0 %}

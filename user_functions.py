@@ -46,15 +46,4 @@ def verify_login(user, password):
         return False
 
 
-def create_user(username, password):
-
-    c_users = load_user()
-
-    if username not in c_users.keys():
-        return True
-
-    else:
-        return False
-
-
 
