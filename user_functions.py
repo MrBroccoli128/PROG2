@@ -19,7 +19,6 @@ def create_init_userdb():
 def load_user():
     with open(PASSWD_FILEPATH, "r") as file:
         loaded_file = loads(file.read())
-
     return loaded_file
 
 
@@ -38,7 +37,8 @@ def verify_login(user, password):
         if s_user == user and sha512_crypt.verify(password, s_pass) is True:
             return True
         else:
+            # Wenn die Daten falsch ist -> False
             return False
-    # Falls im Try ein Fehler passiert, False
+    # Falls im während der Überprüfung des User, Passwort ein Fehler passiert, gibt es kein erfolgreiches login
     except:
         return False

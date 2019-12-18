@@ -27,7 +27,7 @@ def root():
     return redirect(url_for('main'))
 
 
-# Loginpage
+# Loginpage für die Kursuebersicht
 @app.route('/login/', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
@@ -89,7 +89,7 @@ def kursleiter():
             else:
                 # Kurs wird mithilfe der Funktion hinzugefügt
                 add_kurs(i_titel, i_beschreibung, i_datum, i_zeit, i_minT, i_maxT, i_ort, session['username'])
-        # Ein PIST mit dem Button delete bedeutet, das löschen eines kurses
+        # Ein POST mit dem Button delete bedeutet, das löschen eines kurses
         elif "delete" in request.form["btn"]:
             coursename = request.form["btn"].split(";")
             # Übergabe des Kursnamens an die Löschfunktion
