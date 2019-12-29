@@ -11,8 +11,8 @@ STUDENT_LIST_LOCATION = 7  # Stelle des Teilnehmer Arrays im kursliste dict
 def init_gen_kursliste():
     # Key ist der Kursname -> Problem Kurse mit gleichen Namen sind nicht möglich
     kursliste = {"Schwimmen": ["In diesem Kurs lernt man Schwimmen",  # Beschreibung
-                               (2020, 6, 24),  # Datum
-                               (18, 00, 00),  # Zeit
+                               (20, 4, 2020),  # Datum
+                               (18, 45, 00),  # Zeit
                                "Schwimmbad Chur",  # Ort
                                3,  # MIN Teilnehmer Zahl
                                10,  # MAX Teilnehmer Zahl
@@ -22,14 +22,27 @@ def init_gen_kursliste():
                                 ["Vanessa", "Herbst", (1998, 2, 21), "Nichtheilig 2", "Flims"]
                                 ]],
                  "Mountainbiken": ["Fahrrad fahren in den Bergen",
-                                   (2020, 9, 2),
+                                   (23, 9, 2020),
                                    (17, 30, 00),  # Zeit
-                                   "Laax Talstation",
+                                   "Bahnhof Chur",
                                    2,
                                    8,
                                    "Sybille Tschan",
+                                   [["Mark", "Alterman", (1998, 2, 1), "Kleine Strasse 13", "Felsberg"],
+                                    ["Margrit", "chen", (1997, 12, 21), "Bikerweg 12", "Davos"]
+                                    ]],
+                 "Freeride Grundkurs": ["In diesem Kurs lernt man die Grundlagen des Freeriden",
+                                        (4, 2, 2020),
+                                        (9, 15, 00),  # Zeit
+                                        "Laax Talstation",
+                                        3,
+                                        5,
+                                        "Sybille Tschan",
                                    [["Mark", "Neumann", (1998, 2, 1), "Grosse Strasse 132", "Landquart"],
-                                    ["Laura", "Graf", (1997, 12, 21), "Bikerweg 12", "Thusis"]
+                                    ["Laura", "Graf", (1997, 12, 21), "Skiweg 12", "Thusis"],
+                                    ["Rudy", "Hemp", (1987, 11, 1), "Irgendwo 1", "Cazis"],
+                                    ["Weihnachts", "Mann", (1872, 11, 27), "Eisblock 65", "Nordpol"],
+                                    ["Heiko", "Hirsch", (1987, 4, 7), "Strasse 44", "Vaduz"]
                                     ]]
                  }
 
@@ -120,4 +133,3 @@ def del_kurs(kursname):
 # Unten stehende Zeile auskommentieren damit die initialen Kurse beim start generiert werden
 # save_json(COURSELIST_FILENAME, init_gen_kursliste())
 
-# init_gen_kursliste()

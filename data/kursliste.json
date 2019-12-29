@@ -1,99 +1,157 @@
 {
-  "sdfbn": [
-    "adfasd",
+  "Schwimmen": [
+    "In diesem Kurs lernt man Schwimmen",
     [
-      "21",
-      "11",
-      "2019"
+      20,
+      4,
+      2020
     ],
     [
-      "03",
-      "32"
+      18,
+      45,
+      0
     ],
-    "yfgadsg",
-    1,
-    1,
-    "Admini Strator",
+    "Schwimmbad Chur",
+    3,
+    10,
+    "Hans Friederich",
     [
       [
-        "sdfsdfds",
-        "sdFdsdsfFDS",
+        "Michael",
+        "Greuter",
         [
-          "07",
-          "11",
-          "2019"
+          1999,
+          4,
+          11
         ],
-        "asdfasdfsD",
-        "sdfsDFsdfsD"
-      ]
-    ]
-  ],
-  "Patrik ": [
-    "anschauen",
-    [
-      "20",
-      "11",
-      "2019"
-    ],
-    [
-      "22",
-      "00"
-    ],
-    "bei ihm zuhause",
-    1,
-    4,
-    "Admini Strator",
-    [
-      [
-        "Jonathan",
-        "Linder",
-        [
-          "28",
-          "11",
-          "2019"
-        ],
-        "qwerqwerqwe",
-        "rqwerqwer"
+        "Heiliger Weg 2",
+        "Chur"
       ],
       [
-        "\u00e0wle\u00c9LWEFAADSF",
-        "\u00e9KSKNDFLASD\u00c0F",
+        "Vanessa",
+        "Herbst",
         [
-          "30",
-          "11",
-          "2019"
+          1998,
+          2,
+          21
         ],
-        "asdfo\u00e4aisdnf-l m23",
-        "4e65ri7ot8pz9u0i$o\u00a8plkoj\u00f6lbkh.vjg,cfmxgd"
+        "Nichtheilig 2",
+        "Flims"
       ]
     ]
   ],
-  "Jasmin": [
-    "halllo",
+  "Mountainbiken": [
+    "Fahrrad fahren in den Bergen",
     [
-      "12",
-      "11",
-      "2019"
+      23,
+      9,
+      2020
     ],
     [
-      "22",
-      "00"
+      17,
+      30,
+      0
     ],
-    "bei ihr zuhause",
+    "Bahnhof Chur",
     2,
-    12,
-    "Admini Strator",
+    8,
+    "Sybille Tschan",
     [
       [
-        "jonathan",
-        "ich",
+        "Mark",
+        "Alterman",
         [
-          "21",
-          "11",
-          "2019"
+          1998,
+          2,
+          1
         ],
-        "asdfasdf",
-        "adsfasdfs"
+        "Kleine Strasse 13",
+        "Felsberg"
+      ],
+      [
+        "Margrit",
+        "chen",
+        [
+          1997,
+          12,
+          21
+        ],
+        "Bikerweg 12",
+        "Davos"
+      ]
+    ]
+  ],
+  "Freeride Grundkurs": [
+    "In diesem Kurs lernt man die Grundlagen des Freeriden",
+    [
+      4,
+      2,
+      2020
+    ],
+    [
+      9,
+      15,
+      0
+    ],
+    "Laax Talstation",
+    3,
+    5,
+    "Sybille Tschan",
+    [
+      [
+        "Mark",
+        "Neumann",
+        [
+          1998,
+          2,
+          1
+        ],
+        "Grosse Strasse 132",
+        "Landquart"
+      ],
+      [
+        "Laura",
+        "Graf",
+        [
+          1997,
+          12,
+          21
+        ],
+        "Skiweg 12",
+        "Thusis"
+      ],
+      [
+        "Rudy",
+        "Hemp",
+        [
+          1987,
+          11,
+          1
+        ],
+        "Irgendwo 1",
+        "Cazis"
+      ],
+      [
+        "Weihnachts",
+        "Mann",
+        [
+          1872,
+          11,
+          27
+        ],
+        "Eisblock 65",
+        "Nordpol"
+      ],
+      [
+        "Heiko",
+        "Hirsch",
+        [
+          1987,
+          4,
+          7
+        ],
+        "Strasse 44",
+        "Vdauz"
       ]
     ]
   ]

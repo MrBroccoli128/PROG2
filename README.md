@@ -44,6 +44,25 @@ Die Daten werden wieder über das Webinterface ausgegeben.
 - Löschen der Kurse
 - Wenn der Kurs voll ist, wird er grün markiert
 
+## Bedinungsanleitung
+Die Applikation benötigt keine speziellen Schritte zur Installation. Vom / Verzeichnis wird man auf die Startseite weitergeleitet.
+
+Startseite:
+- Durch einen Klick auf den Button Anmelden kann sich man sich bei jeweiligen Kurs anmelden.
+- Um zur Administratorensicht zu gelangen muss man sich über die Schaltfläche "Login" anmelden. -> Benutzername: Administraator Password: passwort
+
+Kursleiter Übersicht:
+Nach der Authentifizierung können die Kurse administriert werden. -> Durch die Anmeldung wird ein Cookie erstellt, d.h solange man nicht auf Logout klickt steht diese Übersicht zur Verfügung. 
+Wie das Label "Neuen Kurs erstellen" bereits vermuten lässt, kann über diesen Button ein neuer Kurs angelegt werden.
+Der Button Teilnehmer zeigt die Anmeldungen für den jeweiligen Kurs an.
+Falls der Kurs nicht statt findet kann er auch gelöscht werden.
+Wenn ein Kurs grün umrahmt ist bedeutet dies das der Kurs voll ist und für die normalen Benutzer nicht mehr angezeigt wird.
+
+
+Zurücksetzen der Applikation
+Kurse:
+Um die Applikation auf die Standard Kurse, welche bei der Abgabe vorhanden waren zurückzusetzen, kann um kurs_mgmt.py 
+Zu unterst die Zeile "save_json(COURSELIST_FILENAME, init_gen_kursliste())" auskommentiert werden.
 # Reflexion
 Zu Anfang musste ich zuerst den Umgang mit Flask lernen. Das hatte zur folge das ich sehr viele HTML Seiten hatte. 
 Nachdem ich das Ganze etwas besser verstande hatte konnte ich die meisten Funktionen der Applikation auf 2 HTML Seiten abbilden.
