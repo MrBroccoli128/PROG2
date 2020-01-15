@@ -1,9 +1,13 @@
 #####
 # Die Applikation wurde unter folgenden Umständen entwickelt und getestet.
-# OS: macOS 10.15 Catalina
-# Browser: Firefox 69.0.2 x64
+# PyCharm 2019.3.1 (Professional Edition)
+# Build #PY-193.5662.61, built on December 18, 2019
+# Runtime version: 11.0.5+10-b520.17 x86_64
+# VM: OpenJDK 64-Bit Server VM by JetBrains s.r.o
+# macOS 10.15.1
+# Non-Bundled Plugins: AceJump, izhangzhihao.rainbow.brackets, net.vektah.codeglance, org.sonarlint.idea
+# Browser: Firefox 72.0.1 x64
 #####
-####
 
 
 ### SACHEN WELCHE NÄCHSTES MAL ANDERS GEMACHT WERDEN:

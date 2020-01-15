@@ -6,9 +6,15 @@ from user_functions import load_user
 COURSELIST_FILENAME = "kursliste"  # Name des Kurslistenfiles
 STUDENT_LIST_LOCATION = 7  # Stelle des Teilnehmer Arrays im kursliste dict
 
-
-# Für die initiale Generierung einer Kursliste kann diese Funktion verwendet werden
 def init_gen_kursliste():
+    ###
+    # Summary:
+    #  Für die initiale Generierung einer Kursliste kann diese Funktion verwendet werden
+    # Args:
+    #   none
+    # Return:
+    #   kursliste (dict): Initiale Kursliste
+    ###
     # Key ist der Kursname -> Problem Kurse mit gleichen Namen sind nicht möglich
     kursliste = {"Schwimmen": ["In diesem Kurs lernt man Schwimmen",  # Beschreibung
                                (20, 4, 2020),  # Datum
@@ -50,20 +56,29 @@ def init_gen_kursliste():
 
 
 def save_json(filename, save_file):
-    ####
-    # Funktion um das DICT als JSON auf dem Filesystem zu speichern
-    # Filename = Name des Files in welches gespeichert werden soll
-    # save_file = Beinhaltet das dict das gespeichert wird
-    ####
+    ###
+    # Summary:
+    #  Funktion um das DICT als JSON auf dem Filesystem zu speichern
+    # Args:
+    #   filename(string) = Filename des zu speichernden Files
+    #   save_file(dict) = aktuelles, noch dict, welches als json gespeichert werden soll
+    # Return:
+    #   none
+    ###
     url = str("data/" + filename + ".json")
     with open(url, "w") as file:
         file.write(dumps(save_file))
 
 
 def load_json(filename):
-    ####
-    # Lädt ein dict aus dem JSON file, welches den filenamen hat welches übergeben wurde im pfad /data
-    ####
+    ###
+    # Summary:
+    #  Lädt ein dict aus dem JSON file, welches den filenamen hat welches übergeben wurde im pfad /data
+    # Args:
+    #   filename(string) = Filename des zu ladenden Files
+    # Return:
+    #   loaded_file(dict) = Geladenes Json File als dictionary
+    ###
     url = str("data/" + filename + ".json")
     with open(url, "r") as file:
         loaded_file = loads(file.read())
@@ -71,17 +86,44 @@ def load_json(filename):
 
 
 def get_course_list():
-    # gibt die aktuelle Kursliste zurück
+    ###
+    # Summary:
+    #  Gibt die aktuelle Kursliste zurück
+    # Args:
+    #   none
+    # Return:
+    #   aktuelle kursliste als dict
+    ###
     return load_json(COURSELIST_FILENAME)
 
 
 def save_course_list(courselist):
-    # Speichern der übergebenen Kursliste
+    ###
+    # Summary:
+    #  Übergibt die aktuelle Kursliste zum speichern
+    # Args:
+    #   aktuelle kursliste als dict
+    # Return:
+    #   none
+    ###
     save_json(COURSELIST_FILENAME, courselist)
 
 
-# Neuer Student wird zu einem Kurshinzugefügt
 def add_student(sign_vorname, sign_nachname, sign_geb, sign_address, sign_ort, course):
+    ###
+    # Summary:
+    #  # Neuer Student wird zu einem Kurs hinzugefügt
+    # Args:
+    #   sign_vorname(string) : Vorname
+    #   sign_nachname(string) : Nachname
+    #   sign_geb(string) : Geburtstagsdatum im Format Y-m-d als String
+    #   sign_address(string) : Adresse
+    #   sign_ort(string) : Heimatort
+    #   course(string) : Name des Kurses (Key des dict)
+    # Return:
+    #   none
+    ###
+
     # Abholen der aktuellen Daten
     courselist = get_course_list()
 
@@ -99,6 +141,22 @@ def add_student(sign_vorname, sign_nachname, sign_geb, sign_address, sign_ort, c
 
 
 def add_kurs(i_titel, i_beschreibung, i_datum, i_zeit, i_minT, i_maxT, i_ort, kursleiter):
+    ###
+    # Summary:
+    #  Neuen Kurs hinzufügen
+    # Args:
+    #   i_titel(string) : Titel
+    #   i_beschreibung(string) : Kursbeschreibung
+    #   i_datum(string) : Datum im Format Y-m-d
+    #   i_zeit(string) : Zeit
+    #   i_minT(integer) : Minimale Teilnehmerzahl
+    #   i_maxT(integer) : Maximale Teilnehmerzahl
+    #   i_ort(string) : Ort
+    #   kursleiter(string) : Username des Kursleiters
+    # Return:
+    #   none
+    ###
+
     # Laden der aktuellen Benutzerliste
     user_list = load_user()
     # Laden der aktuellen Kursliste
@@ -120,8 +178,16 @@ def add_kurs(i_titel, i_beschreibung, i_datum, i_zeit, i_minT, i_maxT, i_ort, ku
     save_course_list(courselist)
 
 
-# Löschen eines Kurses
 def del_kurs(kursname):
+    ###
+    # Summary:
+    #  Löscht einen Kurs aus der aktuellen Kursliste
+    # Args:
+    #   kursname(string) : Name des Kurses, welcher dem Key im dict entspricht
+    # Return:
+    #   none
+    ###
+
     # Abrufen der aktuellen Kursliste
     courselist = get_course_list()
 

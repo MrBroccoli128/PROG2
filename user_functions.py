@@ -8,6 +8,15 @@ PASSWD_FILEPATH = "data/passwd.json"  # Pfad zur JSON datei
 # Initiale User Datenbank
 # Diese Funktion kann für die Initialisierung verwendet werden. Damit befindet sich nur der Admin User im system
 def create_init_userdb():
+    ###
+    # Summary:
+    #   Initiale Userliste generieren
+    # Args:
+    #   none
+    # Return:
+    #   none
+    ###
+
     users = {"Administrator": [sha512_crypt.hash('passwort'),
                                "Admini",  # Vorname
                                "Strator"]}  # Nachname
@@ -17,14 +26,31 @@ def create_init_userdb():
 
 # Gibt die aktuelle Userliste zurück
 def load_user():
+    ###
+    # Summary:
+    #   Lädt die aktuelle Userliste aus dem json file passwd.json
+    # Args:
+    #   none
+    # Return:
+    #   aktuelle kursliste als dict
+    ###
+
     with open(PASSWD_FILEPATH, "r") as file:
         loaded_file = loads(file.read())
     return loaded_file
 
 
-# Diese Funktion überprüft die eingegebenen Login Parameter
-# Und gibt nur bei richtigem Usernamen und Passwort ein True zurück
 def verify_login(user, password):
+    ###
+    # Summary:
+    #   Diese Funktion überprüft die eingegebenen Login Parameter und checkt ob sie im passwd.json vorhanden sind
+    # Args:
+    #   user(string) = Eingegebner Username
+    #   password(string) = Eingegebenes Passwort im cleartext
+    # Return:
+    #   Boolscher Wert: True = Credentials sind korrekt; False = Credentials sind falsch
+    ###
+
     # Wenn irgendetwas falsch ist soll False zurückgegeben werden. z.B wenn User nicht gefunden wird
     # deshalb wird ein try verwendet, damit wird der Fehler bei einem nicht existierenden Key im Dict abgefangen
     try:
