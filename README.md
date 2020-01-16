@@ -63,6 +63,11 @@ Zurücksetzen der Applikation
 Kurse:
 Um die Applikation auf die Standard Kurse, welche bei der Abgabe vorhanden waren zurückzusetzen, kann um kurs_mgmt.py 
 Zu unterst die Zeile "save_json(COURSELIST_FILENAME, init_gen_kursliste())" auskommentiert werden.
+
+# Abflussdiagramm
+![Abflussdiagramm](docs/workflow.png)
+
+
 # Reflexion
 Zu Anfang musste ich zuerst den Umgang mit Flask lernen. Das hatte zur folge das ich sehr viele HTML Seiten hatte. 
 Nachdem ich das Ganze etwas besser verstande hatte konnte ich die meisten Funktionen der Applikation auf 2 HTML Seiten abbilden.
